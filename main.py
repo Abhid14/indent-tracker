@@ -21,7 +21,7 @@ async def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/reload")
 async def reload():
-    subprocess.run(["git", "pull" ,"&"])
+    subprocess.run(["git", "pull"])
     return {"status": "success"}
 
 
