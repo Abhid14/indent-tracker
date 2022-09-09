@@ -11,7 +11,7 @@ app.add_middleware(HTTPSRedirectMiddleware)
 
 @app.get("/")
 async def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "Piku"}
 
 
 @app.get("/items/{item_id}")
