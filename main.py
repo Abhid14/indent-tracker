@@ -21,7 +21,7 @@ async def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/reload")
 async def reload():
-    subprocess.Popen('git pull', shell=True)
+    subprocess.Popen("git pull", stdout=subprocess.PIPE).communicate()
     return {"status": "success"}
 
 
