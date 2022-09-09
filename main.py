@@ -21,6 +21,7 @@ async def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/reload")
 async def reload():
+    os.system("git config --global --add safe.directory /home/lab/indent-tracker")
     subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE)
     return {"status": "success"}
 
