@@ -1,10 +1,9 @@
 from typing import Union
-import git
 from fastapi import FastAPI
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 import os
+import subprocess
 
-g = git.cmd.Git(git_dir)
 
 app = FastAPI()
 app.add_middleware(HTTPSRedirectMiddleware)
@@ -22,7 +21,7 @@ async def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/reload")
 async def reload():
-    g.pull()
+    subprocess.run(["git", "pull" ,"&"])
     return {"status": "success"}
 
 
