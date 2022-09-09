@@ -26,7 +26,7 @@ async def reload():
 @app.get("/dump")
 async def dump():
     #os.system("DROP DATABASE databasename;")
-    return {"status": "success"}
+    return {"status": "dump ok"}
 
 @app.get("/restart")
 async def restart():
