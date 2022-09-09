@@ -1,8 +1,11 @@
 from typing import Union
-
+import git
 from fastapi import FastAPI
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 import os
+
+g = git.cmd.Git(git_dir)
+
 app = FastAPI()
 app.add_middleware(HTTPSRedirectMiddleware)
 
@@ -19,7 +22,7 @@ async def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/reload")
 async def reload():
-    os.system("git pull")
+    g.pull()
     return {"status": "success"}
 
 
@@ -28,8 +31,8 @@ async def dump():
     #os.system("DROP DATABASE databasename;")
     return {"status": "dump oksdadadqad"}
 
+
 @app.get("/restart")
 async def restart():
     os.system("sudo reboot")
     return {"status": "success"}
-
