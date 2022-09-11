@@ -4,5 +4,7 @@ mydb = mysql.connector.connect(
     user="root",
     password="lab22",
 )
+mycursor = mydb.cursor()
 
-print(mydb)
+mycursor.execute("SHOW DATABASES;")
+print(mycursor.fetchall())
